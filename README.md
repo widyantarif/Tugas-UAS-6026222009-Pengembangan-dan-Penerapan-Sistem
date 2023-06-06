@@ -36,6 +36,7 @@ Untuk source code lengkap, bisa dilihat disini [package.json](https://github.com
 ## Pembuatan database dan konfigurasi
 
 1. Pembuatan database lokal sesuai seperti yang dilampirkan dibawah. 
+
 ![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/struktur%20database.JPG)
 
 2. Konfigurasi koneksi antara node.js dengan database dengan source code dibawah. 
@@ -57,10 +58,12 @@ conn.getConnection((err) => {
 
 module.exports = conn;
 ```
+Untuk source code lengkap bisa dilihat [disini](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/config/db.js)
 
 ## Pembuatan service menggunakan Node.js
 
 Berikut adalah penjelasan pembuatan service berbasis node.js:
+
 1. Penjelasan app-get
 ```
 app.get('/get-user', function (req, res) {
@@ -97,8 +100,57 @@ yaitu untuk mendapatkan nilai dari kolom id, nama dan kategori dari database use
           "data" : results
   ```
  yaitu untuk menampilkan response kepada client apakah terjadi kesalahan (eror) atau keberhasilan. akan muncul pesan seperti yang tertera. Berikut adalah gambaran apabila dilakukan test didalam postman 
- 
-3. Penjelasan app-store
+![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/postman%20get-user.JPG)
+
+2. Penjelasan app-store
+```
+app.post('/store-user', function (req, res) {
+    console.log(req.body);
+    const param = req.body;
+    const nama = param.nama;
+    const kategori = param.kategori;
+    const now = new Date();
+
+    const queryStr = 'INSERT INTO user (nama, kategori, created_by) VALUES (?, ?, ?)';
+    const values = [nama, kategori, now];
+  
+    conn.query(queryStr, values, (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message: err.sqlMessage,
+            data: null
+        });
+      } else {
+        res.status(200).json({
+          "success" : true,
+          "message" : "Sukses menyimpan data",
+          "data" : null
+```
+
+dengan menggunakan implementasi __POST__ yaitu untuk menambahkan data yang kedalam database. Dalam menambah data yang ada didalam database, menggunakan perintah
+```
+INSERT INTO user (nama, kategori, created_by) VALUES (?, ?, ?)
+```
+yaitu kedalam kolom nama dan kategori. 
+
+```
+ if (err) {
+          res.status(500).json({
+              success: false,
+              message: err.sqlMessage,
+              data: null
+          });
+      } else {
+        res.status(200).json({
+          "success" : true,
+          "message" : "Sukses menampilkan data",
+          "data" : results
+  ```
+yaitu untuk menampilkan response kepada client apakah terjadi kesalahan (eror) atau keberhasilan. akan muncul pesan seperti yang tertera. Berikut adalah gambaran apabila dilakukan test didalam postman 
+![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/postman%20store-user.JPG)
+
 4. Penjelasan app-update
 
 
