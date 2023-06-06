@@ -201,5 +201,85 @@ yaitu untuk menampilkan response kepada client apakah terjadi kesalahan (eror) a
 
 __Source Code lengkap:__ [disini](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/app.js)
 
+## Pembuatan service menggunakan tampilan client
+
+Berikut adalah gambaran sistem untuk client yang telah dibuat. 
+
+1. Update Data Peserta
+dengan menginputkan id yang terdaftar, bisa menyunting nama dan kategori. 
+
+![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/update%20client.JPG)
+
+2. Store Data Peserta
+dengan menginputkan nama dan kategori untuk menambahkan data peserta khusus kategori beregu. 
+![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/store%20client.JPG)
+
+3. View Data Peserta
+menampilkan data peserta yang telah tersimpan di database yang berisikan id, nama dan kategori. 
+![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/view%20client.JPG)
+
+4. Koneksi Antara service node.js dengan tampilan client
+berikut adalah source code untuk koneksi antara service yang bernama _app.js_ dengan tampilan client yang telah dibuat yang menggunakan implemntasi html+css.
+
+```
+app.get('/js/bootstrap.min.js', (req, res) => {
+    const filePath = join(__dirname, 'client/js/bootstrap.min.js');
+    res.sendFile(filePath);
+});
+
+app.get('/js/jquery.min.js', (req, res) => {
+    const filePath = join(__dirname, 'client/js/jquery.min.js');
+    res.sendFile(filePath);
+});
+
+app.get('/js/popper.js', (req, res) => {
+    const filePath = join(__dirname, 'client/js/popper.js');
+    res.sendFile(filePath);
+});
+
+
+app.get('/css/style.css', (req, res) => {
+    const filePath = join(__dirname, 'client/css/style.css');
+    res.sendFile(filePath);
+});
+
+app.get('/css/bootstrap.min.css', (req, res) => {
+    const filePath = join(__dirname, 'client/css/bootstrap.min.css');
+    res.sendFile(filePath);
+});
+
+app.get('/images/logo.jpg', (req, res) => {
+    const filePath = join(__dirname, 'client/images/logo.jpg');
+    res.sendFile(filePath);
+});
+
+app.get('/', (req, res) => {
+    const filePath = join(__dirname, 'client/view.html');
+    res.sendFile(filePath);
+});
+
+app.get('/store', (req, res) => {
+    const filePath = join(__dirname, 'client/store.html');
+    res.sendFile(filePath);
+});
+
+app.get('/update', (req, res) => {
+    const filePath = join(__dirname, 'client/update.html');
+    res.sendFile(filePath);
+});
+
+app.get('/view', (req, res) => {
+    const filePath = join(__dirname, 'client/view.html');
+    res.sendFile(filePath);
+});
+
+app.get('/payment', (req, res) => {
+    const filePath = join(__dirname, 'client/payment.html');
+    res.sendFile(filePath);
+```
+
+__Source Code lengkap:__ [disini](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/tree/main/client)
+__Source Code lengkap app.js:__ [disini](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/app.js)
+
 
 
