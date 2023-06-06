@@ -35,7 +35,7 @@ Untuk source code lengkap, bisa dilihat disini [package.json](https://github.com
 
 ## Pembuatan database dan konfigurasi
 1. Pembuatan database lokal sesuai seperti yang dilampirkan dibawah. 
-!(https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/struktur%20database.JPG)
+![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/struktur%20database.JPG)
 
 ## Pembuatan service menggunakan Node.js
 Berikut adalah penjelasan pembuatan service berbasis node.js:
