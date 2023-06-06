@@ -279,8 +279,8 @@ app.get('/payment', (req, res) => {
     res.sendFile(filePath);
 ```
 
-- __Source Code lengkap:__ [disini](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/tree/main/client)
-- __Source Code lengkap app.js:__ [disini](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/app.js)
+- __Source Code client lengkap:__ [disini](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/tree/main/client)
+- __Source Code app.js lengkap:__ [disini](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/app.js)
 
 
 
