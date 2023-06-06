@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>SPOEMAN</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-0 pb-4">
+  <div class="container-fluid">
+    <div class="pt-3"><h3>SPOEMAN</h3></div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Scoreboard</a>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown show">
+            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Profil
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="/store">Add</a>
+              <a class="dropdown-item" href="/update">Update</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="wrapper d-flex align-items-stretch">
+  <nav id="sidebar">
+    <div class="p-4 pt-0 mt-0">
+      <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+      <ul class="list-unstyled components mb-5">
+        <li>
+          <a href="/update">Update</a>
+        </li>
+        <li>
+          <a href="/store">Add</a>
+        </li>
+        <li>
+          <a href="/view">View</a>
+        </li>
+        <li>
+          <a href="/payment">Payment</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+  <div id="content" class="p-4 p-md-5 pt-0 mt-0">
+
+    <h2 class="mb-4">Update Data Peserta</h2>
+    <p> Masukkan id, nama, dan kategori yang ingin diperbaiki:</p>
+
+    <form id="frm1" onsubmit="funcPut(event)">
+      <div class="form-group">
+        <label for="id">ID:</label>
+        <input type="text" class="form-control" id="id" name="id">
+      </div>
+      <div class="form-group">
+        <label for="nama">Nama:</label>
+        <input type="text" class="form-control" id="nama" name="nama">
+      </div>
+      <div class="form-group">
+        <label for="kategori">Kategori:</label>
+        <input type="text" class="form-control" id="kategori" name="kategori">
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+    <script>
+      function funcPut(event) {
+        event.preventDefault();
+
+        let idInput = document.getElementById("id");
+        let namaInput = document.getElementById("nama");
+        let kategoriInput = document.getElementById("kategori");
+
+        let id = idInput.value;
+        let nama = namaInput.value;
+        let kategori = kategoriInput.value;
+
+        let payload = {
+          id: id,
+          nama: nama,
+          kategori: kategori
+        };
+
+        fetch("http://localhost:3000/update-user", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        })
+                .then(response => response.json())
+                .then(data => {
+                  if (data.success) {
+                    alert("Success: " + data.message);
+                  } else {
+                    alert("Error: " + data.message);
+                  }
+                  window.location.reload();
+                })
+                .catch(error => {
+                  console.error("Error:", error);
+                  alert("Ada error tidak diketahui!");
+                });
+      }
+    </script>
+  </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
