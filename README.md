@@ -151,7 +151,52 @@ yaitu kedalam kolom nama dan kategori.
 yaitu untuk menampilkan response kepada client apakah terjadi kesalahan (eror) atau keberhasilan. akan muncul pesan seperti yang tertera. Berikut adalah gambaran apabila dilakukan test didalam postman 
 ![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/postman%20store-user.JPG)
 
-4. Penjelasan app-update
+3. Penjelasan app-update
+```
+app.put('/update-user', function (req, res) {
+    const param = req.body;
+    const id = param.id;
+    const nama = param.nama;
+    const kategori = param.kategori;
+    const queryStr = 'UPDATE user SET nama = ?, kategori = ? WHERE id = ?';
+    const values = [nama, kategori, id];
+    conn.query(queryStr, values, (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message: err.sqlMessage,
+            data: null
+        });
+      } else {
+        res.status(200).json({
+          "success" : true,
+          "message" : "Sukses mengubah data",
+          "data" : null
+```
+
+dengan menggunakan implementasi __PUT__ yaitu untuk menyunting data yang sudah ada di database. Dalam menyunting data yang sudah ada didalam database, menggunakan perintah
+
+```
+UPDATE user SET nama = ?, kategori = ? WHERE id = ?
+```
+
+yaitu mengambil id sebagai primary key untuk mengambil data kemudian pihak client bisa menyunting nama dan kategori. 
+
+```
+ if (err) {
+          res.status(500).json({
+              success: false,
+              message: err.sqlMessage,
+              data: null
+          });
+      } else {
+        res.status(200).json({
+          "success" : true,
+          "message" : "Sukses menampilkan data",
+          "data" : results
+  ```
+yaitu untuk menampilkan response kepada client apakah terjadi kesalahan (eror) atau keberhasilan. akan muncul pesan seperti yang tertera. Berikut adalah gambaran apabila dilakukan test didalam postman 
+![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/postman%20update-user.JPG)
 
 
-[payment](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/client/payment.html)
