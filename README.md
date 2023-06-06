@@ -1,6 +1,7 @@
 # Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem
 
 Nama: Widyantari Febiyanti (6026222009)
+-----------------
 
 ## Package untuk service node.js
 Berikut adalah langkah yang harus dilakukan untuk meng-install package yang dibutuhkan untuk pembuatan service berbasis node.js: 
