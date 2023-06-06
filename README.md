@@ -28,10 +28,14 @@ npm install nodemon
 ```
 serta menambahkan script pada package.json sebagai berikut
 ```
- "start": "nodemon app.js"
+ "start": "nodemon [nama file.js]"
 ```
 
 Untuk source code lengkap, bisa dilihat disini [package.json](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/package.json)
+
+## Pembuatan database dan konfigurasi
+1. Pembuatan database lokal sesuai seperti yang dilampirkan dibawah. 
+
 
 ## Pembuatan service menggunakan Node.js
 Berikut adalah penjelasan pembuatan service berbasis node.js:
