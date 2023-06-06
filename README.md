@@ -34,10 +34,32 @@ serta menambahkan script pada package.json sebagai berikut
 Untuk source code lengkap, bisa dilihat disini [package.json](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/package.json)
 
 ## Pembuatan database dan konfigurasi
+
 1. Pembuatan database lokal sesuai seperti yang dilampirkan dibawah. 
 ![](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/Dokumentasi%20Tugas%20EAS/struktur%20database.JPG)
 
+2. Konfigurasi koneksi antara node.js dengan database dengan source code dibawah. 
+```
+const mysql = require('mysql');
+const conn = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "tugas",
+    charset: "utf8mb4",
+    timezone: "+07:00"
+});
+
+conn.getConnection((err) => {
+    if (err) throw err
+    console.log ('DB Connected');
+});
+
+module.exports = conn;
+```
+
 ## Pembuatan service menggunakan Node.js
+
 Berikut adalah penjelasan pembuatan service berbasis node.js:
 1. Penjelasan app-get
 ```
