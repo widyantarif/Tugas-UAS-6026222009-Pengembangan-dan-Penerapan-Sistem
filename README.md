@@ -26,12 +26,12 @@ npm install mysql express
 ```
 npm install nodemon
 ```
-serta menambahkan script pada package.json sebagai berikut
+    serta menambahkan script pada package.json sebagai berikut
 ```
  "start": "nodemon app.js"
 ```
 
-Untuk source code lengkap, bisa dilihat [disini](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/package.json)
+Untuk source code lengkap, bisa dilihat disini [package.json](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/package.json)
 
 
 
