@@ -26,13 +26,54 @@ npm install mysql express
 ```
 npm install nodemon
 ```
-    serta menambahkan script pada package.json sebagai berikut
+serta menambahkan script pada package.json sebagai berikut
 ```
  "start": "nodemon app.js"
 ```
 
 Untuk source code lengkap, bisa dilihat disini [package.json](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/package.json)
 
+## Pembuatan service menggunakan Node.js
+Berikut adalah penjelasan pembuatan service berbasis node.js:
+1. Penjelasan app-get
+```
+app.get('/get-user', function (req, res) {
+    const queryStr = 'SELECT id, nama, kategori FROM user';
+    conn.query(queryStr, (err, results) => {
+      if (err) {
+          res.status(500).json({
+              success: false,
+              message: err.sqlMessage,
+              data: null
+          });
+      } else {
+        res.status(200).json({
+          "success" : true,
+          "message" : "Sukses menampilkan data",
+          "data" : results
+```
+dengan menggunakan implementasi __GET__ yaitu untuk menampilkan data yang telah tersimpan didalam database. Dalam menggambil data yang ada didalam database, menggunakan perintah
+```
+SELECT id, nama, kategori FROM user
+```
+yaitu untuk mendapatkan nilai dari kolom id, nama dan kategori dari database user. 
+```
+ if (err) {
+          res.status(500).json({
+              success: false,
+              message: err.sqlMessage,
+              data: null
+          });
+      } else {
+        res.status(200).json({
+          "success" : true,
+          "message" : "Sukses menampilkan data",
+          "data" : results
+  ```
+ yaitu untuk menampilkan response kepada client apakah terjadi kesalahan (eror) atau keberhasilan. akan muncul pesan seperti yang tertera. Berikut adalah gambaran apabila dilakukan test didalam postman 
+ 
+3. Penjelasan app-store
+4. Penjelasan app-update
 
 
 [payment](https://github.com/widyantarif/Tugas-UAS-6026222009-Pengembangan-dan-Penerapan-Sistem/blob/main/client/payment.html)
